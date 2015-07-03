@@ -14,6 +14,7 @@
 //////////////////////////////////
 //constants
 const int MAX_UNITS_COUNT = 35;
+const char* HERO_STAT_STRING = "                                   ";
 
 //Logic variables
 HANDLE consoleHandle = 0;
@@ -22,6 +23,7 @@ unsigned char levelData[HEIGHT][WIDTH];
 UnitData unitsData[MAX_UNITS_COUNT];
 int unitsCount = 0;
 int heroIndex = 0;
+int prevHeroStatTextLength;
 
 void SetupSystem()
 {
@@ -74,10 +76,17 @@ void Render()
     SetConsoleTextAttribute(consoleHandle, ConsoleColor_Green);
     printf("\n\tDUNGEONS & ORCS");
 
+    printf("\n\n\t%s\r\t", HERO_STAT_STRING);
     SetConsoleTextAttribute(consoleHandle, ConsoleColor_Red);
-    printf("\n\n\tHP: ");
+    printf("HP: ");
     SetConsoleTextAttribute(consoleHandle, ConsoleColor_White);
-    printf("%i      ", unitsData[heroIndex].health);
+    printf("%i", unitsData[heroIndex].health);
+    SetConsoleTextAttribute(consoleHandle, ConsoleColor_Cyan);
+    printf(" Weapon: ");
+    SetConsoleTextAttribute(consoleHandle, GetRenderCellSymbolColor(GetWeaponSymbolByType(unitsData[heroIndex].weapon)));
+    printf("%s", GetWeaponName(unitsData[heroIndex].weapon));
+    SetConsoleTextAttribute(consoleHandle, ConsoleColor_White);
+    printf(" (Dmg: %i)", GetWeaponDamage(unitsData[heroIndex].weapon));
 
     printf("\n\n\t");
     for (int y = 0; y < HEIGHT; y++)

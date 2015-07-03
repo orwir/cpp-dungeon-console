@@ -70,3 +70,18 @@ WeaponType GetWeaponTypeBySymbol(unsigned char symbol)
     }
     return WeaponType_None;
 }
+
+unsigned char GetWeaponSymbolByType(WeaponType weaponType)
+{
+    switch (weaponType)
+    {
+    case WeaponType_Stick:    return CELL_SYMBOL_STICK;
+    case WeaponType_Club:     return CELL_SYMBOL_CLUB;
+    case WeaponType_Spear:    return CELL_SYMBOL_SPEAR;
+    case WeaponType_Saber:    return CELL_SYMBOL_SABER;
+    case WeaponType_Flail:    return CELL_SYMBOL_FLAIL;
+    case WeaponType_Scythe:   return CELL_SYMBOL_SCYTHE;
+    case WeaponType_Claimore: return CELL_SYMBOL_CLAIMORE;
+    }
+    return ' ';
+}

@@ -67,7 +67,7 @@ ConsoleColor GetRenderCellSymbolColor(unsigned char cellSymbol)
 {
     switch (cellSymbol)
     {
-    case CELL_SYMBOL_EMPTY:    return ConsoleColor_Black;
+    case CELL_SYMBOL_EMPTY:    return ConsoleColor_White;
     case CELL_SYMBOL_WALL:     return ConsoleColor_White;
     case CELL_SYMBOL_HERO:     return ConsoleColor_Yellow;
     case CELL_SYMBOL_ORC:      return ConsoleColor_Green;
